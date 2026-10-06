@@ -2,14 +2,14 @@
 
 ## Overview
 
-InkTime este un smartwatch low-power, open-source, optimizat pentru autonomie ridicată (≥30 zile), folosind un display e-paper și o arhitectură hardware eficientă energetic.
+InkTime is an open-source, low-power smartwatch design targeting a battery life of at least 30 days, using an e-paper display and an energy-efficient hardware architecture.
 
-Sistemul este construit în jurul microcontrollerului nRF52840 și integrează:
-- afișare e-paper
-- notificări BLE
-- accelerometru pentru pași
-- feedback haptic
-- management eficient al energiei
+The system is built around the nRF52840 microcontroller and integrates:
+- an e-paper display
+- BLE notifications
+- an accelerometer for step counting
+- haptic feedback
+- efficient power management
 
 ---
 
@@ -48,13 +48,13 @@ Sistemul este construit în jurul microcontrollerului nRF52840 și integrează:
 
 ## Bill of Materials (BOM)
 
-| Funcție | Componentă | Package | JLC Code | Datasheet |
+| Function | Component | Package | JLC Code | Datasheet |
 |--------|-----------|--------|----------|----------|
 | MCU | nRF52840-QIAA-R | aQFN73 | C190794 | Nordic |
 | Charger | BQ25180YBGR | DSBGA-8 | C3682423 | TI |
 | Regulator | RT6160AWSC | WLCSP-15 | C7065276 | Richtek |
 | Fuel Gauge | MAX17048G+T10 | DFN-8 | C2682616 | Maxim |
-| Accelerometru | BMA421 | LGA-12 | C5242966 | Bosch |
+| Accelerometer | BMA421 | LGA-12 | C5242966 | Bosch |
 | Haptic Driver | DRV2605LDGSR | VSSOP-10 | C527464 | TI |
 | Motor | LCM1027B3605F | Wire | C7528806 | ERM |
 | PFET | SI2301CDS | SOT-23 | C10487 | Vishay |
@@ -67,25 +67,25 @@ Sistemul este construit în jurul microcontrollerului nRF52840 și integrează:
 
 ### Power
 - USB-C 5V input
-- BQ25180 charger cu power-path
-- RT6160 pentru 3.3V
-- MAX17048 pentru monitorizare baterie
+- BQ25180 charger with power-path management
+- RT6160 for the 3.3 V supply
+- MAX17048 for battery monitoring
 
 ### MCU
-- nRF52840 (BLE + control sistem)
-- RTC pentru actualizare timp
+- nRF52840 (BLE + system control)
+- RTC for time updates
 
 ### Display
 - E-paper 1.54”
-- update periodic
-- alimentare controlată prin PFET
+- periodic updates
+- PFET-controlled power supply
 
-### Senzori și Haptic
-- BMA421 pentru pași
-- DRV2605L pentru vibrații
+### Sensors and Haptics
+- BMA421 for step counting
+- DRV2605L for vibration feedback
 
 ### Input
-- 3 butoane (active low)
+- 3 buttons (active low)
 
 ---
 
@@ -107,13 +107,13 @@ Sistemul este construit în jurul microcontrollerului nRF52840 și integrează:
 - P1.01 PFET
 - P0.12 Haptic EN
 
-### Interrupturi
+### Interrupts
 - P0.08 IMU INT1
 - P1.08 IMU INT2
 - P0.10 Fuel gauge ALERT
 - P0.11 Charger INT
 
-### Butoane
+### Buttons
 - P0.13 UP
 - P0.14 DOWN
 - P1.00 ENTER
@@ -122,25 +122,25 @@ Sistemul este construit în jurul microcontrollerului nRF52840 și integrează:
 
 ## Design Decisions
 
-- componente doar pe TOP layer
-- plane de GND pe TOP și BOTTOM
-- via stitching în zona RF
-- decuplare aproape de pini
-- keepout sub antenă
-- baterie fără conector JST
+- components placed only on the top layer
+- ground planes on the top and bottom layers
+- via stitching in the RF area
+- decoupling capacitors close to the pins
+- keepout beneath the antenna
+- battery connection without a JST connector
 
 ---
 
-## DRC și Verificări
+## DRC and Validation
 
-- ERC verificat
-- DRC rulat
-- excepții:
+- ERC checked
+- DRC performed
+- exceptions:
   - Only INPUT pins on NET ID
-  - overlap mecanic USB/butoane
+  - mechanical overlap of USB/buttons
 
 ---
 
-## Concluzie
+## Conclusion
 
-Design-ul este optimizat pentru consum redus, integrare compactă și producție în masă.
+The design is optimized for low power consumption, compact integration and mass production.
