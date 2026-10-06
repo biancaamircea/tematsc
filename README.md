@@ -1,4 +1,4 @@
-# InkTime Smartwatch
+# InkTime -- Smartwatch PCB Design
 
 ## Overview
 
